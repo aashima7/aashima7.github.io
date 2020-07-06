@@ -1,334 +1,182 @@
 <!DOCTYPE html>
-<!-- saved from url=(0033)https://devopsfied.launchaco.com/ -->
-<html><head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168910702-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-168910702-1');
-  </script>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Devopsfied</title>
-    
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Enterprise grade deployment stack for your business">
-    <meta property="og:image" content="">
-    <link rel="shortcut icon" href="./Devopsfied_files/favicon.ico">
-    <link href="./Devopsfied_files/css" rel="stylesheet">
-
-    <link rel="stylesheet" href="./Devopsfied_files/AllTemplates.min.css">
-
-    <style>
-      .launchaco-promo {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        cursor: pointer;
-        width: 0;
-        height: 0;
-        z-index: 999999;
-      }
-
-      .launchaco-promo__active {
-        width: initial;
-        height: initial;
-      }
-
-      .launchaco-promo-speechbubble {
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-        position: absolute;
-        left: 50px;
-        top: -11px;
-        padding: 9px;
-        color: white;
-        border-radius: 3px;
-        background: linear-gradient(#227ef7, #1290fc);
-        font-size: 14px;
-        font-weight: 600;
-        width: 93px;
-        box-sizing: border-box;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .15s ease-in-out;
-      }
-
-      .launchaco-promo__active:hover .launchaco-promo-speechbubble {
-        opacity: 1;
-      }
-
-      .launchaco-promo svg {
-        transition: all .3s ease-in-out;
-        opacity: 0;
-      }
-
-      .launchaco-promo__active svg {
-        opacity: 1;
-      }
-
-      .launchaco-promo-speechbubble:before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        transform: rotate(45deg);
-        left: -4px;
-        bottom: 10px;
-        border-radius: 3px;
-        background: #1290fc;
-        z-index: 2;
-        position: absolute
-      }
-
-      .launchaco-promo__active .launchaco-promo-speechbubble__animate {
-        animation: popinpopup 3s linear forwards 0.1s;
-      }
-
-      @keyframes popinpopup {
-        0% {
-          opacity: 0;
-          transform: translate3d(0, 3px, 0)
-        }
-
-        7%,
-        93% {
-          opacity: 1;
-          transform: translate3d(0, 0, 0)
-        }
-
-        100% {
-          opacity: 0;
-          transform: translate3d(0, -4px, 0)
-        }
-      }
-
-      .launchaco-promo-animate:hover {
-        opacity: 1 !important;
-      }
-    </style>
-
-
-    <style>
-
-    </style>
-  </head>
-
-  <body class="font-hacker" cz-shortcut-listen="true">
-    <div class="blue-white">
-      <!---->
-      <header class="header">
-        <div class="container-lrg">
-          <div class="flex col-12 spread"><a class="logo launchaco-builder-hoverable logo"><img src="./Devopsfied_files/fc3183f0-4616-402c-bd71-ee96f2c0f4f8.png" alt="DevopsfiedCompany Logo"></a> <a href="https://devopsfied.typeform.com/to/fCP6W7" target="_blank" class="nav-link secondary-color mr0">Request Early Access</a></div>
-        </div>
-      </header>
-      <section class="section">
-        <div class="container mb40">
-          <div class="col-12 text-center">
-            <h1 class="heading-lrg primary-color launchaco-builder-hoverable">Enterprise grade deployment stack for your business</h1>
-            <h2 class="subheading secondary-color mt20 launchaco-builder-hoverable">Our product is like your in-house DevOps team. Don't waste your time taking care of the infrastructure. Write cool code instead.</h2>
-            <div class="mt40"><a href="https://devopsfied.typeform.com/to/fCP6W7" target="_blank" class="button mobile-text-center mt10 launchaco-builder-hoverable mobile-text-center accent-bg primary-color"> <span> Talk to an expert </span></a></div>
-          </div>
-        </div>
-        <div class="container-lrg">
-          <div class="col-12">
-            <div class="browser mt75 launchaco-builder-hoverable">
-              <div class="mask"><img src="./Devopsfied_files/42d794f3-59f7-48b7-80f6-04bae253d105.png" alt="Screenshot of App in Browser" class="mask-img"></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devopsfied - deploy manage microservice</title>
+      <link rel="icon" href="./images/favicon.svg">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">Devopsfied</a>
+              <a href="#" style="color: #49a8ef;" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mailto:hello@devopsfied.com">Contact us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <section id="feature-1" class="section blue-gradient" sitemeta="[object Object]" activepage="Landing">
-      <div class="container-lrg flex">
-        <div class="col-4 text-center flex flex-column center-horizontal"><i class="icon mobile-center-icon secondary-bg launchaco-builder-hoverable"><svg class="svg-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
-              <path d="M12.5 0L1 6.5v12a.5.5 0 0 0 .26.439l11 6a.5.5 0 0 0 .48 0l11-6A.5.5 0 0 0 24 18.5v-12zM12 23.658L2.526 18.49l6.222-3.556a.5.5 0 1 0-.496-.868L2 17.638V7.065l10 5.652zm.5-11.807L3.032 6.5 12 1.431V7.5a.5.5 0 0 0 1 0V1.431L21.968 6.5zM23 17.638l-6.252-3.572a.5.5 0 0 0-.496.868l6.223 3.556L13 23.658v-10.94l10-5.653z"></path>
-            </svg></i>
-          <h3 class="bold primary-color launchaco-builder-hoverable">Web Deployment Stack</h3>
-          <p class="paragraph secondary-color launchaco-builder-hoverable">Initialize Load balancer, Containers, VMs, DNS and VPC in one step.</p>
-        </div>
-        <div class="col-4 text-center flex flex-column center-horizontal"><i class="icon mobile-center-icon secondary-bg launchaco-builder-hoverable"><svg class="svg-fill" viewBox="0 0 25 21" xmlns="http://www.w3.org/2000/svg">
-              <path d="M25 20.5a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5V.5a.5.5 0 1 1 1 0V20h23.5a.5.5 0 0 1 .5.5zM4 17a1 1 0 0 0 1-1 .963.963 0 0 0-.05-.244l4.807-4.805a.786.786 0 0 0 .731-.097l5.513 3.15A1 1 0 0 0 18 14a.961.961 0 0 0-.05-.243l4.806-4.806c.079.027.161.043.244.049a1 1 0 1 0-1-1 .963.963 0 0 0 .05.244l-4.807 4.805a.786.786 0 0 0-.731.097l-5.513-3.15A1 1 0 0 0 9 10a.961.961 0 0 0 .05.243L4.243 15.05A.958.958 0 0 0 4 15a1 1 0 0 0 0 2z"></path>
-            </svg></i>
-          <h3 class="bold primary-color launchaco-builder-hoverable">Data Deployment Stack</h3>
-          <p class="paragraph secondary-color launchaco-builder-hoverable">Initialize your Warehouse, MapReduce clusters and Notebooks in one step.</p>
-        </div>
-        <div class="col-4 text-center flex flex-column center-horizontal"><i class="icon mobile-center-icon secondary-bg launchaco-builder-hoverable"><svg class="svg-fill" viewBox="0 0 20 23" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 21h6a3.25 3.25 0 0 1-6 0zm12.56-3.44l-.974-.974A2 2 0 0 1 18 15.17V8A8 8 0 1 0 2 8v7.171a2 2 0 0 1-.586 1.415l-.975.975A1.5 1.5 0 0 0 0 18.62V20h20v-1.379a1.5 1.5 0 0 0-.44-1.06z"></path>
-            </svg></i>
-          <h3 class="bold primary-color launchaco-builder-hoverable">Monitoring</h3>
-          <p class="paragraph secondary-color launchaco-builder-hoverable">Deploy industry standards monitoring and billing alerts in one step.</p>
-        </div>
-      </div>
-      <!---->
-    </section>
-    <section id="pricing-2" class="section blue-white" sitemeta="[object Object]" activepage="Landing">
-      <div class="container mb75 text-center">
-        <div class="col-12">
-          <h4 class="heading primary-color launchaco-builder-hoverable">Pricing</h4>
-          <p class="paragraph secondary-color launchaco-builder-hoverable">Simple Pricing you and your team can afford</p>
-        </div>
-      </div>
-      <div class="container-lrg">
-        <div class="col-12">
-          <div class="card flex mobile-flex-wrap">
-            <div class="col-4 pad30 flex flex-column spread launchaco-builder-hoverable">
-              <div class="mb20">
-                <h4 class="bold primary-color">Scalable Web Stack Deployment</h4> <b class="heading primary-color">$500</b> <span class="paragraph secondary-color">Monthly</span>
-                <ul class="mt20">
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Services</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Versions</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Environments</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">One Command Deployments</span></li>
-                </ul>
-              </div>
-              <!---->
-            </div>
-            <div class="col-4 pad30 flex flex-column spread launchaco-builder-hoverable">
-              <div class="mb20">
-                <h4 class="bold primary-color">Data Stack Deployment</h4> <b class="heading primary-color">$500</b> <span class="paragraph secondary-color">Monthly</span>
-                <ul class="mt20">
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Services</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Versions</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Unlimited Environments</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">One Command Data Pipeline Deployments</span></li>
-                </ul>
-              </div>
-              <!---->
-            </div>
-            <div class="col-4 pad30 flex flex-column spread launchaco-builder-hoverable">
-              <div class="mb20">
-                <h4 class="bold primary-color">Monitoring Alerts Add-on</h4> <b class="heading primary-color">$100</b> <span class="paragraph secondary-color">Monthly</span>
-                <ul class="mt20">
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Industry grade alerts</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Uptime alerts</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Performance alerts</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Billing alerts</span></li>
-                  <li class="flex mb20"><svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-fill noshrink mr20">
-                      <g transform="translate(4.000000, 5.000000)">
-                        <path d="M5.24961475,8.39956394 L2.16512063,5.35475362 C1.74038521,4.93548271 1.05017933,4.9352057 0.624646383,5.35526395 C0.199019838,5.77541456 0.198881924,6.45614266 0.624129379,6.8759191 L4.35212111,10.555948 C4.38658274,10.6034965 4.42544251,10.6488955 4.46870038,10.6915969 C4.70907746,10.9288814 5.03375662,11.0320952 5.3475228,11.0013023 C5.59592563,10.9812599 5.83876209,10.8774981 6.02880771,10.6898975 C6.06831079,10.6509027 6.10414872,10.6096632 6.13632157,10.5665961 L13.9850992,2.81879759 C14.4107939,2.39857976 14.410861,1.71746456 13.985328,1.29740632 C13.5597015,0.8772557 12.8697673,0.877449143 12.444108,1.29763217 L5.24961475,8.39956394 Z"></path>
-                      </g>
-                    </svg> <span class="span secondary-color">Security alerts</span></li>
-                </ul>
-              </div>
-              <!---->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="cta-3" class="section blue-white" sitemeta="[object Object]" activepage="Landing">
-      <!---->
-      <div class="container text-center">
-        <div class="col-12">
-          <h4 class="heading-lrg primary-color launchaco-builder-hoverable"></h4>
-          <div class="mt40"><a href="https://devopsfied.typeform.com/to/fCP6W7" target="_blank" class="button mobile-text-center mt10 launchaco-builder-hoverable mobile-text-center accent-bg primary-color"> <span> Talk to an expert </span></a></div>
-        </div>
-      </div>
-    </section>
-    <section id="faq-4" class="section blue-white" sitemeta="[object Object]" activepage="Landing">
+          </nav>
+        
+          <ul class="sidenav" id="mobile-demo">
+            <li><a href="#!" class="brand-logo">NANOBOX</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="details.html">Details</a></li>
+          </ul>
+    </header>
+    <section class="sec-1">
       <div class="container">
-        <div class="col-12 text-center">
-          <h3 class="heading primary-color launchaco-builder-hoverable">
-            Frequently Asked Questions
-          </h3>
-          <p class="subheading secondary-color mt20 launchaco-builder-hoverable">Can't find an answer? Don't hesitate to reach out!</p>
-        </div>
-      </div>
-      <div class="container">
-        <div class="col-12 mt40">
-          <div class="faq pad20"><b class="bold primary-color launchaco-builder-hoverable">
-              What is the difference between Devopsfied and other Paas platforms?
-            </b>
-            <p class="paragraph secondary-color launchaco-builder-hoverable">
-              The other platforms run your code in their own servers, which are managed by them, also charging you 2-3 times more than a normal machine on cloud. Devopsfied gives you enterprise grade deployment system with auto scaling and security features already configured, in your own AWS or Google account at a fraction of the cost.
-            </p>
-          </div>
-          <div class="faq pad20"><b class="bold primary-color launchaco-builder-hoverable">
-              Who manages my server ?
-            </b>
-            <p class="paragraph secondary-color launchaco-builder-hoverable">
-              Devopsfied is hosted in the cloud and is available as a service. You don’t need to install, deploy or configure anything on your servers to use it. We configure and deploy your code to your servers in the cloud or to your own dedicated servers.
-            </p>
-          </div>
-          <div class="faq pad20"><b class="bold primary-color launchaco-builder-hoverable">
-              How do you create services in my AWS account ?
-            </b>
-            <p class="paragraph secondary-color launchaco-builder-hoverable">
-              We would either need access to one of your machine to setup web clusters or you can share your AWS access credentials for us to create infra for you. Do not worry we follow all standard security protocols. For more details schedule a call with one of our Engineers so that we can explain you the process.
-            </p>
+        <div class="row">
+          <div class="col m10 s12">
+            <h1>DEVOPS SIMPLIFIED</h1>
+            <h1>FOR YOUR BUSINESS</h1>
+
+            <h4>Our product is like your in-house DevOps team.
+            Teams of all sizes use Devopsfied to deploy, manage, monitor and scale web apps.</h4>
+            <p>Like Heroku but for your cloud and application</p>
           </div>
         </div>
       </div>
     </section>
-
-  
-
-  <script>
-    window.onscroll = function()
-    {
-      showAd()
-    }
-
-    function showAd()
-    {
-      var scrollBarPosition = window.pageYOffset | document.body.scrollTop;
-
-      // At specifiv position do what you want
-      if (scrollBarPosition > 300)
-      {
-        document.getElementById("visual-dreamer").className = "launchaco-promo launchaco-promo__active";
-        window.onscroll = function() {};
-      }
-    }
-  </script>
-
-</body></html>
+    <section class="sec-3 white">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4><span>Build apps your way.</span> Pre-defined workflow to manage your web services. Deploy single service or a cluster of services.</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec-2">
+      <div class="container">
+        <div class="row">
+          <div class="col m4 s12">
+            <img src="./images/monitoring0.png" alt="" class="sec2-img hide-on-small-only">
+          </div>
+          <div class="col m4 s12">
+            <h4>Deploy web application</h4>
+            <div class="eq_1">
+              <p>Specify configuration in simple yaml to deploy applications on any cloud in minutes.</p>
+            </div>
+            <h4>No code required </h4>
+            <div class="eq_1">
+              <p>No need to get into mess of different configuration management tool, focus on writing cool code instead.</p>
+            </div>
+          </div>
+          <div class="col m4 s12">
+            <h4>Simple yaml files</h4>
+            <div class="eq_1">
+              <p>Use simple yaml files to deploy complex infrastructure clusters in matter of minutes. Managing services is never this easy.</p>
+            </div>
+            <h4>Setup cloud monitoring</h4>
+            <div class="eq_1">
+              <p>As soon as you scale or change any resource, Devopsfied automatically detects and monitors the new resource without any maintenance required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec-3 white">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4><span>Focus on writing code rather than spending time managing and configuring servers, load balancers, firewalls and networks.</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec-2">
+      <div class="container">
+        <div class="row">
+          <div class="col m4 s12">
+            <img src="./images/simplicity.76203de.svg" alt="" class="sec2-img hide-on-small-only">
+          </div>
+          <div class="col m4 s12">
+            <h4>Get applications insights</h4>
+            <div class="eq_1">
+              <p>Avoid spending too much time writing alerts. We have pre-configured 100's of alerts to give you best insights for your application without any digging.</p>
+            </div>
+            <h4>No Manual Alarms</h4>
+            <div class="eq_1">
+              <p>Devopsfied help you receive alerts when they matter and address them, no need to spend endless time configuring them.</p>
+            </div>
+          </div>
+          <div class="col m4 s12">
+            <h4>Anomaly detection</h4>
+            <div class="eq_1">
+              <p>Provides critical alerts without the noise. Warns you of leading indicators of failure.</p>
+            </div>
+            <h4>Completely secure</h4>
+            <div class="eq_1">
+              <p>All our alerts processes data which is generated using read-only IAM credentials, we never make changes to your cloud for monitoring.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec-4">
+      <div class="container">
+        <div class="row">
+          <div class="col m6 s12">
+            <img src="./images/web%20deployment.jpeg" class="hide-on-small-only" alt="">
+          </div>
+          <div class="col m6 s12">
+            <div class="center">
+              <img src="./images/chip-1710300_640.png" alt=""  style="width: 30%;">
+            </div>
+            <h5>Realtime health monitoring</h5>
+            <p>Comprehensive system and service health monitoring.Have access to hundreds of custom alerts learnt through years of experience by managing web and database application.Gain deep visibility on how your application performs.</p>
+            <div class="center">
+              <img src="./images/chip-1710300_640.png" alt="" style="width: 30%;">
+            </div>
+            <h5>No Vendor lock-in, not even us.</h5>
+            <p>Move from any cloud provider to other(AWS to GCP) in minutes. If you dont like us, move away from our platform and manage it yourself, just like before.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec-5">
+      <div class="container">
+        <div class="row">
+          <div class="col m6 s12">
+            <h5>Run blue/green or canary deployments using one single command</h5>
+            <p>Launching a web service using Devopsfied is dead simple. However if you need to configure & customize your runtime in any way, we provide clear and simple processes for customizing and controlling every aspect of your environment.</p>
+            <div>
+              <img src="./images/sec5img.png" alt="" class="hide-on-small-only" style="width: 90%;">
+            </div>
+          </div>
+          <div class="col m6 s12">
+            <div>
+              <img src="./images/sec5img1.png" alt="" class="hide-on-small-only" style="width: 90%;">
+            </div>
+            <h5>Choose the cloud providers that fits you best</h5>
+            <p>Deploy your app consistently to whatever cloud provider best matches your budget, geographical location and resource needs. Devopsfied is provider agnostic; even if you need to switch providers down the road, your workflow will remain unchanged.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="white">
+      <div class="container">
+        <div class="row center">
+          <div style="display: flex;justify-content: center;">
+          <a href="mailto:hello@devopsfied.com">PRICING&emsp;&emsp;</a>
+          </div>
+          <p>Devopsfied © Copyright 2020</p>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/jquery.matchHeight.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devopsfied - deploy manage microservice</title>
+      <link rel="icon" href="./images/favicon.svg">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body style="background: #dbe1e6;">
+    <header class="page-2-header">
+      <div class="page-2-nav">
+        <ul class="left page2">
+          <li><a href="index.html" class="logo">Devopsfied</a></li>
+          <li><a href="blog.html" style="margin-left: 10px;">/ Blog / Right task size AWS ECS</a></li>
+        </ul>
+      </div>
+    </header>
+    <section class="page-2-sec-1">
+      <div class="container">
+        <div class="row">
+          <div class="col m3 s12">
+            <button id="drop-open-btn">
+            <div class="mobile-drop drop-open">
+              <div>
+                <h5>Content<i class="material-icons" style="float: right;">add</i></h5>
+              </div>
+            </div>
+            </button>
+            <button href="" id="drop-close-btn">
+            <div class="mobile-drop drop-close">
+              <div>
+                <h5>Content<i class="material-icons" style="float: right;">close</i></h5>
+              </div>
+            </div>
+            </button>
+            <div class="side-menu">
+              <ul>
+                <li>
+                  <a href="db-read-write-latency-1.html" class="sidebar-element ">
+                    <span>
+                      <i class="fa fa-square " aria-hidden="true"  style="font-size: 5px;"></i>
+                    </span>
+                    </i>&emsp;DB Read/Write Latency (Part I)
+                  </a>
+                </li>
+                <li>
+                  <a href="ecs-task-size-1.html" class="sidebar-element ">
+                    <span>
+                      <i class="fa fa-square " aria-hidden="true"  style="font-size: 5px;"></i>
+                    </span>
+                    </i>&emsp;Choose right ECS Task size
+                  </a>
+                </li>
+            </ul>
+          </div>
+        </div>
+        <!-- section -2 -->
+        <div class="col m9 s12" id="section-1">
+          <p>/ <span id="breadcrumb-text"> Blog</span></p>
+          <div class="content-div white z-depth-2">
+            <div class="container-2">
+              <h1>Improve Resource utilization on ECS Cluster </h1>
+              <hr>
+              <p style="padding-top: 50px;">Everyone should be concerned about getting maximum juice from your servers be if you are running your workload on <span>virtual machines</span> or <span> containers </span>Let's look at how to resize task to better utilize our resources in ECS Cluster.</p>
+              <h4 class="dark-blue">Check CPU credits</h4>
+              <p>
+                First thing to do is check the utilized CPU credits of the instance you are using, AWS provides no easy way to scale ECS if you are running your workload on EC2 for better auto scaling its always recommended to use <span> Fargate</span>.
+                For our currency discussion, let's assume that we are using instance of size m4.4xlarge, which is 64GB and gives us 16 vCPU's.
+
+                And let's say we define our task definition to use 2048 units of task cpu.
+
+              </p>
+              <h4 class="dark-blue">Calculate CPU utilization</h4>
+              <p style="padding-top: 20px;">
+                  No of tasks running in the cluster = x
+                  <br>
+                  Fixed CPU for each task = 1024
+                  <br>
+                  Container instance virtaul cpu = 1024 * x
+              </p>
+              <h4 class="dark-blue">Calculate CPU utilization</h4>
+              <p style="padding-top: 20px;">
+                  ECS service's CPUUtilization metric graph shows the CPUUtilization in percentage of CPU that is used by the Amazon ECS tasks that belong to a service on a cluster when compared to the CPU and memory that is specified in the service's task definition.
+
+This is calculated from the formula:
+<br>
+<br>
+                      x = Total cpu units by tasks in service x 100
+<br>
+                      y = Total cpu units specified in task definition x no of tasks in service
+<br>
+                      Service cpu utilization = x / y
+                      <br>
+              </p>
+              <h4 class="dark-blue">Action steps ?</h4>
+              <p style="padding-top: 20px;">
+Cluster utilization is measured as the percentage of CPU and memory that is used by all Amazon ECS tasks on a cluster when compared to the aggregate CPU and memory that was registered for each active container instance in the cluster.
+
+If we want to carry with the same task definition specifications to reserve 1024 CPU for the tasks, then we would have to change the instance type currently being used by the cluster to somewhat larger than the current. 
+
+If the CPU credits are completely being utilized, it is recommended to make use of the larger instance for the ECS cluster that has more CPU units available.               </p>
+              <h4 class="dark-blue">Optimizations</h4>
+              <p style="padding-top: 20px;">
+Additionally with larger instances we can leverage the Task Placement strategies & constraints to effectively spread the tasks based on the requirements. For example Binpack strategies launches tasks on the instance which has less resources left (it tries to pack/launch all the tasks on the same instance until resources are utilized) which could help in saving cost for Dev and Staging environments.
+
+Also, we can enable container insights for your ECS Cluster with which you can have more visibility on container metrics.                <br>
+                <br>
+              </p>
+              <h4 class="dark-blue">What next ?</h4>
+              <p style="padding-top: 20px;">
+                  Having difficulty idenitfying bottlenecks in your system, need an intelligent system to do all mundane analysis and delivers you the right insight about your application. Reach out to hello@devopsfied.com and learn how we can help.
+              </p>
+            </div>
+          <br>
+            <div class="container">
+              <div class="div-buttons before-click">
+                <div>
+                  <p>Was this blog helpful?</p>
+                </div>
+                <div>
+                  <button class="page-2-btn red-text" id="no">NO</button>
+                  <button class="page-2-btn green-text" id="yes">YES</button>
+                </div>
+              </div>
+              <div class="div-buttons after-click">
+                <div>
+                  <p>Thank you for the feedback !</p>
+                </div>
+                <div>
+                  <img src="./images/tick.png" width="35px">
+                </div>
+              </div>
+              <div class="div-buttons after-click-2">
+                <div>
+                  <p>Thank you for the feedback !</p>
+                  <p>Reach out to <span>hello@devopsfied.com</span> with your issue and we'll try to help.</p>
+                </div>
+                <div>
+                  <img src="./images/tick.png" width="35px">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <footer class="white">
+      <div class="container">
+        <div class="row center">
+          <div style="display: flex;justify-content: center;">
+          <a href="mailto:hello@devopsfied.com">PRICING&emsp;&emsp;</a>
+          </div>
+          <p>Devopsfied © Copyright 2020</p>
+        </div>
+      </div>
+    </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
