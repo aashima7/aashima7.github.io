@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devopsfied - deploy manage microservice</title>
-      <link rel="icon" href="./images/favicon.svg">
+    <link rel="icon" href="./images/favicon.svg">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,173 +15,179 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="./css/main.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171708030-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171708030-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-171708030-1');
-</script>
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  </head>
-  <body style="background: #dbe1e6;">
+    gtag('config', 'UA-171708030-1');
+    </script>
+</head>
+
+<body style="background: #dbe1e6;">
     <header class="page-2-header">
-      <div class="page-2-nav">
-        <ul class="left page2">
-          <li><a href="index.html" class="logo">Devopsfied</a></li>
-          <li><a href="blog.html" style="margin-left: 10px;">/ Blog / Troubleshoot DB read write latency</a></li>
-        </ul>
-      </div>
+        <div class="page-2-nav">
+            <ul class="left page2">
+                <li><a href="index.html" class="logo">Devopsfied</a></li>
+                <li><a href="blog.html" style="margin-left: 10px;">/ Blog / Troubleshoot DB read write latency</a></li>
+            </ul>
+        </div>
     </header>
     <section class="page-2-sec-1">
-      <div class="container">
-        <div class="row">
-          <div class="col m3 s12">
-            <button id="drop-open-btn">
-            <div class="mobile-drop drop-open">
-              <div>
-                <h5>Content<i class="material-icons" style="float: right;">add</i></h5>
-              </div>
+        <div class="container">
+            <div class="row">
+                <div class="col m3 s12">
+                    <button id="drop-open-btn">
+                        <div class="mobile-drop drop-open">
+                            <div>
+                                <h5>Content<i class="material-icons" style="float: right;">add</i></h5>
+                            </div>
+                        </div>
+                    </button>
+                    <button href="" id="drop-close-btn">
+                        <div class="mobile-drop drop-close">
+                            <div>
+                                <h5>Content<i class="material-icons" style="float: right;">close</i></h5>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="side-menu">
+                        <ul>
+                            <li>
+                                <a href="db-read-write-latency-1.html" class="sidebar-element ">
+                                    <span>
+                                        <i class="fa fa-square " aria-hidden="true" style="font-size: 5px;"></i>
+                                    </span>
+                                    </i>&emsp;DB Read/Write Latency (Part I)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="ecs-task-size-1.html" class="sidebar-element ">
+                                    <span>
+                                        <i class="fa fa-square " aria-hidden="true" style="font-size: 5px;"></i>
+                                    </span>
+                                    </i>&emsp;Choose right ECS Task size
+                                </a>
+                            </li>
+                            <li>
+                                <a href="monitor-alerts-service.html" class="sidebar-element ">
+                                    <span>
+                                        <i class="fa fa-square " aria-hidden="true" style="font-size: 5px;"></i>
+                                    </span>
+                                    </i>&emsp;Monitor and set alerts for your service.
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- section -2 -->
+                <div class="col m9 s12" id="section-1">
+                    <p>/ <span id="breadcrumb-text"> Blog</span></p>
+                    <div class="content-div white z-depth-2">
+                        <div class="container-2">
+                            <h1>Postgres DB R/W latency - I </h1>
+                            <hr>
+                            <p style="padding-top: 50px;">Today we will briefly talk about possible root causes on how to troubleshoot when you see a sudden spike read/write latency on a AWS RDS <span>postgres database server</span> when there is no increase in throughput.</p>
+                            <h4 class="dark-blue">Check IOPS</h4>
+                            <p>
+                                If there is a spike in read write latency in your database server, the first thing we should check is if there is any increase in write IOPS or read IOPS <span> Check their elevation level</span>.
+                                If there is no spike in IOPS then its an indication that the latency is caused by transactions waiting to access either locks or waiting to access data.
+                            </p>
+                            <h4 class="dark-blue">Now we have a theory, let's verify it</h4>
+                            <p style="padding-top: 20px;">
+                                To start with lets look at cloudwatch logs and check the corelation b/w write latency, read latency and disk queue depth.
+                                Disk Queue Depth is the number of outstanding IO requests that are waiting to be performed on a disk. When IO requests are queued, the total amount of time it takes to read or write data to disk will be greater.
+                            </p>
+                            <h4 class="dark-blue">Correlation found ?</h4>
+                            <p style="padding-top: 20px;">
+                                This definetly point to our theory that there must be transactions wanting to access either locks or waiting to access data.
+                            </p>
+                            <h4 class="dark-blue">Bottlenecks ?</h4>
+                            <p style="padding-top: 20px;">
+                                As we are talking about postgres database server here, next time you get into this issue, and if there is a correlation between queue depth and read write lateny run the below queries to gather more information related to your system.
+                            </p>
+                            <h4 class="dark-blue">Handy queries to troubleshoot</h4>
+                            <p style="padding-top: 20px;">
+                                SELECT datname, pid, state, query as query FROM pg_stat_activity ORDER BY pid;.
+                                <br>
+                                <br>
+                                Postgres gives a very handy command to find out what connections is doing on the instance, simply by running pg_stat.
+                                <br>
+                                <br>
+                                SELECT * from pg_stat_activity;
+                                <br>
+                                <br>
+                                To check if there are unwanted locks on your database system, run the command and analyse
+                                <br>
+                                <br>
+                                SELECT * from pg_locks;
+                            </p>
+                            <h4 class="dark-blue">What next ?</h4>
+                            <p style="padding-top: 20px;">
+                                If increased IOPS is your new normal, then you can try out following techniques to improve system performance.
+                                <ul>
+                                    <li>
+                                        1. Reduce the number of unncessary read and writes being performed.
+                                    </li>
+                                    <li>
+                                        2. Upgrade the disk to a higher tier or increase disk size to get better IO performance and/or more IOPS.
+                                    </li>
+                                    <li>
+                                        3. Split IO across multiple disks.
+                                    </li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="container">
+                            Having difficulty idenitfying bottlenecks in your system, need an intelligent system to do all mundane analysis and delivers you the right insight about your application. Reach out to hello@devopsfied.com and learn how we can help.
+                        </div>
+                        <br>
+                        <div class="container">
+                            <div class="div-buttons before-click">
+                                <div>
+                                    <p>Was this blog helpful?</p>
+                                </div>
+                                <div>
+                                    <button class="page-2-btn red-text" id="no">NO</button>
+                                    <button class="page-2-btn green-text" id="yes">YES</button>
+                                </div>
+                            </div>
+                            <div class="div-buttons after-click">
+                                <div>
+                                    <p>Thank you for the feedback !</p>
+                                </div>
+                                <div>
+                                    <img src="./images/tick.png" width="35px">
+                                </div>
+                            </div>
+                            <div class="div-buttons after-click-2">
+                                <div>
+                                    <p>Thank you for the feedback !</p>
+                                    <p>Reach out to <span>hello@devopsfied.com</span> with your issue and we'll try to help.</p>
+                                </div>
+                                <div>
+                                    <img src="./images/tick.png" width="35px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </button>
-            <button href="" id="drop-close-btn">
-            <div class="mobile-drop drop-close">
-              <div>
-                <h5>Content<i class="material-icons" style="float: right;">close</i></h5>
-              </div>
-            </div>
-            </button>
-            <div class="side-menu">
-              <ul>
-                <li>
-                  <a href="db-read-write-latency-1.html" class="sidebar-element ">
-                    <span>
-                      <i class="fa fa-square " aria-hidden="true"  style="font-size: 5px;"></i>
-                    </span>
-                    </i>&emsp;DB Read/Write Latency (Part I)
-                  </a>
-                </li>
-                <li>
-                  <a href="ecs-task-size-1.html" class="sidebar-element ">
-                    <span>
-                      <i class="fa fa-square " aria-hidden="true"  style="font-size: 5px;"></i>
-                    </span>
-                    </i>&emsp;Choose right ECS Task size
-                  </a>
-                </li>
-            </ul>
-          </div>
         </div>
-        <!-- section -2 -->
-        <div class="col m9 s12" id="section-1">
-          <p>/ <span id="breadcrumb-text"> Blog</span></p>
-          <div class="content-div white z-depth-2">
-            <div class="container-2">
-              <h1>Postgres DB R/W latency - I </h1>
-              <hr>
-              <p style="padding-top: 50px;">Today we will briefly talk about possible root causes on how to troubleshoot when you see a sudden spike read/write latency on a AWS RDS <span>postgres database server</span> when there is no increase in throughput.</p>
-              <h4 class="dark-blue">Check IOPS</h4>
-              <p>
-                If there is a spike in read write latency in your database server, the first thing we should check is if there is any increase in write IOPS or read IOPS <span> Check their elevation level</span>.
-                If there is no spike in IOPS then its an indication that the latency is caused by transactions waiting to access either locks or waiting to access data.
-              </p>
-              <h4 class="dark-blue">Now we have a theory, let's verify it</h4>
-              <p style="padding-top: 20px;">
-                To start with lets look at cloudwatch logs and check the corelation b/w write latency, read latency and disk queue depth.
-                Disk Queue Depth is the number of outstanding IO requests that are waiting to be performed on a disk. When IO requests are queued, the total amount of time it takes to read or write data to disk will be greater.
-              </p>
-              <h4 class="dark-blue">Correlation found ?</h4>
-              <p style="padding-top: 20px;">
-                This definetly point to our theory that there must be transactions wanting to access either locks or waiting to access data.
-              </p>
-              <h4 class="dark-blue">Bottlenecks ?</h4>
-              <p style="padding-top: 20px;">
-                As we are talking about postgres database server here, next time you get into this issue, and if there is a correlation between queue depth and read write lateny run the below queries to gather more information related to your system.
-              </p>
-              <h4 class="dark-blue">Handy queries to troubleshoot</h4>
-              <p style="padding-top: 20px;">
-                SELECT datname, pid, state, query as query FROM pg_stat_activity ORDER BY pid;.
-
-                <br>
-                <br>
-                Postgres gives a very handy command to find out what connections is doing on the instance, simply by running pg_stat.
-                <br>
-                <br>
-                SELECT * from pg_stat_activity;
-                <br>
-                <br>
-                To check if there are unwanted locks on your database system, run the command and analyse
-                <br>
-                <br>
-                SELECT * from pg_locks; 
-              </p>
-              <h4 class="dark-blue">What next ?</h4>
-              <p style="padding-top: 20px;">
-                  If increased IOPS is your new normal, then you can try out following techniques to improve system performance.
-
-                  <ul>
-                      <li>
-                          1. Reduce the number of unncessary read and writes being performed.
-                      </li>
-                      <li>
-                          2. Upgrade the disk to a higher tier or increase disk size to get better IO performance and/or more IOPS.
-                      </li>
-                      <li>
-                          3. Split IO across multiple disks.
-                      </li>
-                  </ul>
-              </p>
-            </div>
-            <div class="container">
-            
-              Having difficulty idenitfying bottlenecks in your system, need an intelligent system to do all mundane analysis and delivers you the right insight about your application. Reach out to hello@devopsfied.com and learn how we can help.
-          </div>
-          <br>
-            <div class="container">
-              <div class="div-buttons before-click">
-                <div>
-                  <p>Was this blog helpful?</p>
-                </div>
-                <div>
-                  <button class="page-2-btn red-text" id="no">NO</button>
-                  <button class="page-2-btn green-text" id="yes">YES</button>
-                </div>
-              </div>
-              <div class="div-buttons after-click">
-                <div>
-                  <p>Thank you for the feedback !</p>
-                </div>
-                <div>
-                  <img src="./images/tick.png" width="35px">
-                </div>
-              </div>
-              <div class="div-buttons after-click-2">
-                <div>
-                  <p>Thank you for the feedback !</p>
-                  <p>Reach out to <span>hello@devopsfied.com</span> with your issue and we'll try to help.</p>
-                </div>
-                <div>
-                  <img src="./images/tick.png" width="35px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
     <footer class="white">
-      <div class="container">
-        <div class="row center">
-          <div style="display: flex;justify-content: center;">
-          <a href="mailto:hello@devopsfied.com">PRICING&emsp;&emsp;</a>
-          </div>
-          <p>Devopsfied © Copyright 2020</p>
+        <div class="container">
+            <div class="row center">
+                <div style="display: flex;justify-content: center;">
+                    <a href="mailto:hello@devopsfied.com">PRICING&emsp;&emsp;</a>
+                </div>
+                <p>Devopsfied © Copyright 2020</p>
+            </div>
         </div>
-      </div>
     </footer>
-
-  <script src="./js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
+
 </html>

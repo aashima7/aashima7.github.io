@@ -171,6 +171,16 @@ nav li a:hover{
     font-weight: 500;
     color: #6c6e77;
 }
+li {
+    font-weight: 500;
+    color: #6c6e77;
+
+}
+tr {
+    font-weight: 500;
+    color: #6c6e77;
+    
+}
 .container-2 h4{
     font-size: 28px; 
     font-weight: 500;
